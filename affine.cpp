@@ -42,7 +42,7 @@ int main(){
         }
         // cipher the message
         for(auto &i : message){
-            i = (i > 123 || i < 65 || (i < 97 && i > 91))? i : numericEquivalent.find(i)->second;
+            i = (i > 122 || i < 65 || (i < 97 && i > 90))? i : numericEquivalent.find(i)->second;
         }
         cout << "Affine Cipher: " << message;
     }
@@ -55,7 +55,7 @@ int main(){
         }
         // decipher the message
         for(auto &i : message){
-            i = (i > 123 || i < 65 || (i < 97 && i > 91))? i : numericEquivalent.find(i)->second;
+            i = (i > 122 || i < 65 || (i < 97 && i > 90))? i : numericEquivalent.find(i)->second;
         }
         cout << "Affine Decipher: " << message;
     }
