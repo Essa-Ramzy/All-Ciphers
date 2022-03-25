@@ -6,7 +6,8 @@ using namespace std;
 
 
 //function prototypes
-void transformEncDec(string str);
+void encryptionXOR(string str);
+void decryptionXOR(string str);
 
 //variables
 char key;
@@ -14,15 +15,31 @@ char key;
 int main()
 {
     string input;
-    cout << "Please enter a key: ";
-    cin >> key;
 
-    cout << "Enter message: ";
-    cin >> input;
-    transformEncDec(input);
+    while(true){
+        cout << "Please enter a key: ";
+        cin >> key;
+
+        int choice;
+        cout << "write 1 if you want to encrypt 2 if you want to decrypt: ";
+        cin >> choice;
+
+        if (choice == 1){
+            cout << "Enter text you want to encrypt: ";
+            cin >> input;
+            encryptionXOR(input);
+        }
+        else{
+            cout << "Enter hexa value you want to decrypt: ";
+            cin >> input;
+            decryptionXOR(input);
+        }
+    }
+
+    
 }
 
-void transformEncDec(string str){
+void encryptionXOR(string str){
 
     string output;
     stringstream ss;
@@ -40,14 +57,18 @@ void transformEncDec(string str){
     cout << endl;
 }
 
+void decryptionXOR(string str){
 
-string hexToString(){
+    string output;
 
+    for (int i = 0; i < str.length(); i += 2){
+        stringstream ss;
+        ss << hex << str[i] << str[i+1];
+        int temp;
+        ss >> temp;
+        output += temp ^ key;
+
+    }
+
+    cout << "Decrypted: " << output << endl;
 }
-
-string stringToHex(){
-
-}
-//01001011 K
-//01010000 P
-//00011011
